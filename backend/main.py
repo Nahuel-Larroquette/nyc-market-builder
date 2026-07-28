@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import Literal
 import joblib
 import pandas as pd
 import numpy as np
@@ -12,8 +13,8 @@ class HouseFeatures(BaseModel):
     beds: int
     bath: float
     sqft: float
-    property_type: str
-    borough: str
+    property_type: Literal["Co-op", "Condo", "House", "Multi-family", "Townhouse"]
+    borough: Literal["Brooklyn", "Manhattan", "Queens", "Staten Island"]
 
 @app.get("/")
 def read_root():
